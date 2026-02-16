@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -8,8 +8,8 @@ import { isWhitelisted } from "@/lib/whitelist";
 export const runtime = "nodejs";
 
 export async function PATCH(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth.api.getSession({
     headers: request.headers,
@@ -24,6 +24,7 @@ export async function PATCH(
   }
 
   const body = await request.json();
+  const { id } = await params;
   const title = String(body.title ?? "").trim();
   const content = String(body.content ?? "").trim();
   const imageUrl = String(body.imageUrl ?? "").trim();
@@ -43,7 +44,7 @@ export async function PATCH(
       imageUrl: imageUrl || null,
       updatedAt: new Date(),
     })
-    .where(eq(blogPosts.id, params.id))
+  .where(eq(blogPosts.id, id))
     .returning();
 
   if (!post) {

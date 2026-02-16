@@ -4,6 +4,7 @@ import { desc } from "drizzle-orm";
 import SessionGate from "@/app/components/SessionGate";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const posts = await db

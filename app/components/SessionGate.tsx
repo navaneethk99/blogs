@@ -38,7 +38,8 @@ const EMPTY_SESSION: SessionPayload = {
 };
 
 export default function SessionGate({ posts }: SessionGateProps) {
-  const [sessionState, setSessionState] = useState<SessionPayload>(EMPTY_SESSION);
+  const [sessionState, setSessionState] =
+    useState<SessionPayload>(EMPTY_SESSION);
   const [loading, setLoading] = useState(true);
 
   const refreshSession = async () => {
@@ -78,9 +79,12 @@ export default function SessionGate({ posts }: SessionGateProps) {
           <p className="text-xs uppercase tracking-[0.3em] text-cyan-200/70">
             Transmission
           </p>
-          <p className="text-lg font-semibold text-white">{transmissionStatus}</p>
+          <p className="text-lg font-semibold text-white">
+            {transmissionStatus}
+          </p>
           <div className="flex flex-wrap gap-3 text-sm text-white/70">
-            <div className="rounded-full border border-cyan-200/30 px-3 py-1">
+            {/*<div className="rounded-full border border-cyan-200/30 px-3 py-1">
+
               Database: CockroachDB
             </div>
             <div className="rounded-full border border-cyan-200/30 px-3 py-1">
@@ -88,14 +92,14 @@ export default function SessionGate({ posts }: SessionGateProps) {
             </div>
             <div className="rounded-full border border-cyan-200/30 px-3 py-1">
               Auth: Better Auth
-            </div>
+            </div>*/}
           </div>
         </div>
-          <AuthPanel
-            session={sessionState.session}
-            displayName={sessionState.displayName}
-            onAuthChange={refreshSession}
-          />
+        <AuthPanel
+          session={sessionState.session}
+          displayName={sessionState.displayName}
+          onAuthChange={refreshSession}
+        />
       </section>
 
       {sessionState.canManage && <CreatePostForm />}

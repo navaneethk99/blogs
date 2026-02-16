@@ -9,7 +9,7 @@ type Post = {
   id: string;
   title: string;
   content: string;
-  imageUrl: string;
+  imageUrl?: string | null;
   authorName: string;
   createdAt: string;
   updatedAt: string;

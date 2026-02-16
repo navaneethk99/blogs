@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1771250340112,
+      "tag": "0000_sad_stellaris",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1771251409694,
+      "tag": "0001_melodic_oracle",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1771251821762,
+      "tag": "0002_mature_kree",
+      "breakpoints": true
+    }
+  ]
+}
